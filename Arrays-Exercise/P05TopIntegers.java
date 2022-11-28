@@ -7,22 +7,30 @@ public class P05TopIntegers {
         Scanner scanner = new Scanner(System.in);
 
         int[] numberArr = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int topNumber = numberArr[0];
-        int [] newArr = new int[numberArr.length];
 
 
+        for (int i = 0; i <= numberArr.length-1; i++) {
+            int currentNumber = numberArr[i];
 
-        for (int i = 0; i < numberArr.length-1; i++) {
-            for (int j = i; j < numberArr.length-1; j++) {
+            if (i == numberArr.length - 1) {
+                System.out.println(numberArr[i] + " ");
+                break;
+            }
 
-                if (numberArr[i] > numberArr[j + 1]) {
-                    topNumber = numberArr[i];
+            boolean top = false;
+            for (int j = i+1; j <= numberArr.length-1; j++) {
+
+                if (currentNumber > numberArr[j]) {
+                    top = true;
                 } else {
+                    top = false;
                     break;
                 }
-
             }
-            newArr [i] = topNumber;
+
+            if (top) {
+                System.out.print(currentNumber + " ");
+            }
         }
 
     }
